@@ -1,5 +1,3 @@
-use std::convert::TryInto;
-
 /// Returns true iff the signed value `n` fits into `width` signed bits.
 ///
 /// # Arguments:
@@ -20,7 +18,7 @@ pub fn fitsu(n: u64, width: u64) -> bool {
 
 /// Retrieve a signed value from an unsigned `word`,
 /// beginning at least significant bit `lsb`
-/// and having `width` bytes.
+/// and having `width` bits.
 ///
 /// # Arguments
 ///
@@ -33,8 +31,8 @@ pub fn fitsu(n: u64, width: u64) -> bool {
 /// a signed value corresponding to the 2s complement representation
 /// of the appropriate field of the `word`
 /// or `None` if the field is impossible
-pub fn gets(word: u64, width: u64, lsb: u64) -> i64 {
-    0
+pub fn gets(word: u64, width: u64, lsb: u64) -> Option<i64> {
+    None
 }
 
 /// Retrieve a signed value from an unsigned `word`,
@@ -55,8 +53,8 @@ pub fn gets(word: u64, width: u64, lsb: u64) -> i64 {
 /// or None
 /// if `lsb + width > 64`
 ///
-pub fn getu(word: u64, width: u64, lsb: u64) -> u64 {
-    0
+pub fn getu(word: u64, width: u64, lsb: u64) -> Option<u64> {
+    None
 }
 
 /// Given an unsigned 64-bit `word`, and an unsigned `value`,
@@ -96,13 +94,4 @@ pub fn newu(word: u64, width: u64, lsb: u64, value: u64) -> Option<u64> {
 ///
 pub fn news(word: u64, width: u64, lsb: u64, value: i64) -> Option<u64> {
     Some(0)
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
 }
